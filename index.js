@@ -22,11 +22,9 @@ app.get('/user', userController.show);
 // lista user, filtrando por email
 // ex: /user/buscaemail/?email=vaguetti@gmail.com
 app.get('/user/buscaemail/*', userController.index);
-
 // exclui user
 //req.params  = route params (post, put, delete)
 app.delete('/user/:id', userController.destroy);
-
 // altera user
 app.put('/user/:id', userController.update);
 
@@ -35,10 +33,10 @@ app.put('/user/:id', userController.update);
 
 const ChatGPTController = require('./controllers/ChatGPTController');
 
-app.get('/all/ranking', ChatGPTController.show);  // todas interações registradas
-app.get('/ranking/:id', ChatGPTController.indexbyUserId);
-app.post('/ranking', ChatGPTController.store);
-app.put('/ranking/:id', ChatGPTController.update);
+app.get('/manager/all/chatgpt', ChatGPTController.show);  // todas interações registradas
+app.get('/manager/chatgpt/:id', ChatGPTController.indexbyUserId);
+app.post('/manager/chatgpt', ChatGPTController.store);
+app.put('/manager/chatgpt/:id', ChatGPTController.update);
 
 //=========================================
 //== Rotas para Comunicação com ChatGPT ===
