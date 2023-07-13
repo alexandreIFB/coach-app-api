@@ -17,11 +17,11 @@ module.exports = mongoose.model('ChatGPT', ChatGPTSchema);
 
 /*
 {
-   "record" : 100,
-   "old_record" : 0,
-   "_idUser": "6491ef692100a4af034750ee"
-}
-
+  "_idUser" : "64a709c8fb522639c8e40995",
+  "request" : "fale sobre a api axios",
+  "response" : "vai estudar Guri !!!",
+  "like" : true
+} 
 
 
 
