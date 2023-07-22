@@ -9,7 +9,8 @@ module.exports = {
  //============================================================
 async sendMessageToChatGPT(req,res) {
      const message = req.body.message;
-     const apiKey = 'sua_chave_de_api_do_ChatGPT'; // Substitua com sua própria chave de API
+      console.log(message);
+     const apiKey = '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'; // Substitua com sua própria chave de API
      const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
      const headers = {
@@ -17,6 +18,12 @@ async sendMessageToChatGPT(req,res) {
       'Authorization': `Bearer ${apiKey}`
     };
 
+ /* data = {
+    "model": "gpt-3.5-turbo",
+    "prompt": "Qual é a capital da França?",
+    "temperature": 0.7,
+    "max_tokens": 100
+}*/
     const data = {
       'model': 'gpt-3.5-turbo', // Modelo do ChatGPT
       'messages': [
@@ -24,13 +31,19 @@ async sendMessageToChatGPT(req,res) {
         {'role': 'user', 'content': message} // Papel do usuário, mensagem enviada pelo usuário
        ]
     };
+    console.log(headers);
+    console.log(data);
+
+    let resgpt;
 
     try {
-      const res = await axios.post(apiUrl, data, { headers });
-      return res.data.choices[0].message.content; // Retorna a resposta do ChatGPT
+      resgpt = await axios.post(apiUrl, data, { headers });
+      console.log(resgpt.data.choices[0].message.content);
+      //return res.json(resgpt); // Retorna a resposta do ChatGPT
       } catch (error) {
        throw new Error('Erro ao enviar mensagem para o ChatGPT:', error);
     }
+  return res.json(resgpt.data.choices[0].message.content); // Retorna a resposta do ChatGPT
  },
 
 //==============================================================
