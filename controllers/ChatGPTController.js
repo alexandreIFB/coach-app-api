@@ -10,7 +10,7 @@ module.exports = {
 async sendMessageToChatGPT(req,res) {
      const message = req.body.message;
       console.log(message);
-     const apiKey = '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'; // Substitua com sua própria chave de API
+     const apiKey = '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'; // Substitua com sua própria chave de API
      const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
      const headers = {
@@ -43,6 +43,8 @@ async sendMessageToChatGPT(req,res) {
       } catch (error) {
        throw new Error('Erro ao enviar mensagem para o ChatGPT:', error);
     }
+  // Aqui poderia ter algum filtro de informação
+  // antes de repondar o consumo  da ROTA
   return res.json(resgpt.data.choices[0].message.content); // Retorna a resposta do ChatGPT
  },
 
